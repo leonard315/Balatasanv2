@@ -14,11 +14,30 @@ import { ArrowLeft, Upload, CheckCircle, AlertCircle } from 'lucide-react';
 import { createBooking, uploadPaymentProof } from '@/lib/bookings';
 import { getCurrentUser } from '@/lib/auth';
 import Image from 'next/image';
+import { placeholderImages } from '@/lib/placeholder-images';
 
 const cottageTypes = [
-  { value: 'standard', label: 'Standard', price: 1500 },
-  { value: 'teenager-children', label: 'Teenager/Children', price: 2000 },
-  { value: 'family', label: 'Family', price: 2500 },
+  { 
+    value: 'standard', 
+    label: 'Standard', 
+    price: 1500,
+    description: 'Perfect for couples or small groups',
+    image: 'cottage-view'
+  },
+  { 
+    value: 'teenager-children', 
+    label: 'Teenager/Children', 
+    price: 2000,
+    description: 'Ideal for families with kids',
+    image: 'crystal-waters'
+  },
+  { 
+    value: 'family', 
+    label: 'Family', 
+    price: 2500,
+    description: 'Spacious cottage for the whole family',
+    image: 'island-paradise'
+  },
 ];
 
 export default function FloatingCottageBookingPage() {
@@ -94,55 +113,61 @@ export default function FloatingCottageBookingPage() {
         alt="Balatasan Beach Background"
         fill
         className="object-cover -z-10"
+        priority
       />
-      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm -z-10" />
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900/95 via-blue-900/90 to-slate-900/95 -z-10" />
       
       <div className="container mx-auto py-8 px-4 max-w-2xl relative">
       <Link
         href="/accommodations/floating-cottage"
-        className="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-primary mb-6"
+        className="inline-flex items-center text-sm font-medium text-blue-400 hover:text-blue-300 mb-6"
       >
         <ArrowLeft className="mr-2 h-4 w-4" />
         Back to Floating Cottage
       </Link>
 
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-2xl">Book Floating Cottage</CardTitle>
-          <CardDescription>Reserve your floating paradise experience</CardDescription>
+      <Card className="bg-slate-800/80 border-slate-700 backdrop-blur-sm">
+        <CardHeader className="border-b border-slate-700">
+          <CardTitle className="text-2xl text-white">Book Floating Cottage</CardTitle>
+          <CardDescription className="text-slate-300">Reserve your floating paradise experience</CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent className="pt-6 space-y-4">
           {success && (
-            <Alert className="mb-4 bg-green-50 border-green-200">
-              <CheckCircle className="h-4 w-4 text-green-600" />
-              <AlertDescription className="text-green-800">
-                Booking created successfully! Redirecting to dashboard...
+            <Alert className="bg-green-900/50 border-green-700">
+              <CheckCircle className="h-4 w-4 text-green-400" />
+              <AlertDescription className="text-green-200">
+                Booking created successfully! Redirecting to your bookings...
               </AlertDescription>
             </Alert>
           )}
 
           {error && (
-            <Alert className="mb-4" variant="destructive">
-              <AlertCircle className="h-4 w-4" />
-              <AlertDescription>{error}</AlertDescription>
+            <Alert className="bg-red-900/50 border-red-700">
+              <AlertCircle className="h-4 w-4 text-red-400" />
+              <AlertDescription className="text-red-200">{error}</AlertDescription>
             </Alert>
           )}
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="grid gap-2">
-              <Label htmlFor="fullName">Full Name</Label>
-              <Input id="fullName" name="fullName" required />
+              <Label htmlFor="fullName" className="text-slate-200">Full Name</Label>
+              <Input 
+                id="fullName" 
+                name="fullName" 
+                className="bg-slate-900/50 border-slate-600 text-white placeholder:text-slate-400"
+                required 
+              />
             </div>
 
             <div className="grid gap-2">
-              <Label htmlFor="cottageType">Cottage Type</Label>
+              <Label htmlFor="cottageType" className="text-slate-200">Cottage Type</Label>
               <Select name="cottageType" required onValueChange={handleCottageTypeChange}>
-                <SelectTrigger>
+                <SelectTrigger className="bg-slate-900/50 border-slate-600 text-white">
                   <SelectValue placeholder="Select cottage type" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-slate-800 border-slate-700">
                   {cottageTypes.map((type) => (
-                    <SelectItem key={type.value} value={type.value}>
+                    <SelectItem key={type.value} value={type.value} className="text-white hover:bg-slate-700">
                       {type.label} - ₱{type.price.toLocaleString()}
                     </SelectItem>
                   ))}
@@ -151,40 +176,63 @@ export default function FloatingCottageBookingPage() {
             </div>
 
             <div className="grid gap-2">
-              <Label htmlFor="bookingDate">Booking Date</Label>
-              <Input id="bookingDate" name="bookingDate" type="date" required />
+              <Label htmlFor="bookingDate" className="text-slate-200">Booking Date</Label>
+              <Input 
+                id="bookingDate" 
+                name="bookingDate" 
+                type="date" 
+                className="bg-slate-900/50 border-slate-600 text-white"
+                required 
+              />
             </div>
 
             <div className="grid gap-2">
-              <Label htmlFor="participants">Number of Participants (Max 8)</Label>
-              <Input id="participants" name="participants" type="number" min="1" max="8" defaultValue="1" required />
+              <Label htmlFor="participants" className="text-slate-200">Number of Participants (Max 8)</Label>
+              <Input 
+                id="participants" 
+                name="participants" 
+                type="number" 
+                min="1" 
+                max="8" 
+                defaultValue="1" 
+                className="bg-slate-900/50 border-slate-600 text-white"
+                required 
+              />
             </div>
 
             <div className="grid gap-2">
-              <Label htmlFor="specialRequests">Special Requests (Optional)</Label>
-              <Textarea id="specialRequests" name="specialRequests" rows={3} placeholder="Any special requests or requirements?" />
+              <Label htmlFor="specialRequests" className="text-slate-200">Special Requests (Optional)</Label>
+              <Textarea 
+                id="specialRequests" 
+                name="specialRequests" 
+                rows={3} 
+                placeholder="Any special requests or requirements?" 
+                className="bg-slate-900/50 border-slate-600 text-white placeholder:text-slate-400"
+              />
             </div>
 
             {totalAmount > 0 && (
-              <div className="p-4 bg-muted rounded-lg">
-                <div className="flex justify-between items-center">
-                  <span className="font-semibold">Total Amount:</span>
-                  <span className="text-2xl font-bold text-primary">₱{totalAmount.toLocaleString()}</span>
+              <div className="p-5 bg-blue-900/30 border border-blue-700 rounded-lg space-y-3">
+                <div className="pt-2 border-t border-blue-700/50">
+                  <div className="flex justify-between items-center">
+                    <span className="text-slate-200 font-semibold text-lg">Total Amount:</span>
+                    <span className="text-3xl font-bold text-blue-400">₱{totalAmount.toLocaleString()}</span>
+                  </div>
                 </div>
               </div>
             )}
 
             <div className="grid gap-2">
-              <Label htmlFor="paymentMethod">Payment Method</Label>
+              <Label htmlFor="paymentMethod" className="text-slate-200 text-base font-semibold">Payment Method</Label>
               <Select name="paymentMethod" required onValueChange={(value) => setSelectedPaymentMethod(value)}>
-                <SelectTrigger>
+                <SelectTrigger className="bg-slate-900/70 border-slate-600 text-white h-12 hover:bg-slate-900 transition-colors">
                   <SelectValue placeholder="Select payment method" />
                 </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="GCash">GCash</SelectItem>
-                  <SelectItem value="PayMaya">PayMaya</SelectItem>
-                  <SelectItem value="Bank Transfer">Bank Transfer</SelectItem>
-                  <SelectItem value="Cash">Cash on Arrival</SelectItem>
+                <SelectContent className="bg-slate-800 border-slate-700">
+                  <SelectItem value="GCash" className="text-white hover:bg-slate-700 cursor-pointer">GCash</SelectItem>
+                  <SelectItem value="PayMaya" className="text-white hover:bg-slate-700 cursor-pointer">PayMaya</SelectItem>
+                  <SelectItem value="Bank Transfer" className="text-white hover:bg-slate-700 cursor-pointer">Bank Transfer</SelectItem>
+                  <SelectItem value="Cash" className="text-white hover:bg-slate-700 cursor-pointer">Cash on Arrival</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -237,37 +285,84 @@ export default function FloatingCottageBookingPage() {
               </Alert>
             )}
 
-            <div className="grid gap-2">
-              <Label htmlFor="paymentProof">
-                Payment Proof (Screenshot/Photo)
-                {selectedPaymentMethod !== 'Cash' && <span className="text-red-500 ml-1">*</span>}
+            <div className="space-y-2">
+              <Label htmlFor="paymentProof" className="text-slate-200 text-base font-semibold">
+                Payment Proof {selectedPaymentMethod !== 'Cash' && <span className="text-red-400">*</span>}
               </Label>
-              <div className="flex items-center gap-2">
-                <Input
-                  id="paymentProof"
-                  type="file"
+              <div className="relative">
+                <Input 
+                  id="paymentProof" 
+                  type="file" 
                   accept="image/*"
                   onChange={(e) => setPaymentProof(e.target.files?.[0] || null)}
+                  className="bg-slate-900/70 border-slate-600 text-slate-300 h-12 hover:bg-slate-900 transition-colors file:bg-blue-600 file:text-white file:border-0 file:px-4 file:py-2 file:rounded-md file:mr-4 file:cursor-pointer file:hover:bg-blue-700 file:transition-colors cursor-pointer"
                   required={selectedPaymentMethod !== 'Cash'}
                 />
-                <Upload className="h-4 w-4 text-muted-foreground" />
+                {paymentProof && (
+                  <p className="text-xs text-green-400 mt-2">✓ File selected: {paymentProof.name}</p>
+                )}
+                {selectedPaymentMethod === 'Cash' && (
+                  <p className="text-xs text-slate-400 mt-2">Payment proof not required for cash payment</p>
+                )}
               </div>
-              {paymentProof && (
-                <p className="text-xs text-green-600">✓ File selected: {paymentProof.name}</p>
-              )}
-              <p className="text-xs text-muted-foreground">
-                {selectedPaymentMethod === 'Cash' 
-                  ? 'Payment proof not required for cash payment'
-                  : 'Upload proof of payment for faster approval (Required)'}
-              </p>
             </div>
 
-            <Button type="submit" className="w-full" disabled={loading || !selectedType || !selectedPaymentMethod}>
-              {loading ? 'Creating Booking...' : 'Submit Booking'}
+            <Button 
+              type="submit" 
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white h-12 text-base font-semibold shadow-lg hover:shadow-xl transition-all hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+              disabled={loading || !selectedType || !selectedPaymentMethod}
+            >
+              {loading ? 'Processing...' : 'Submit Booking Request'}
             </Button>
           </form>
         </CardContent>
       </Card>
+
+      {/* Cottage Preview */}
+      {selectedType && (
+        <Card className="bg-slate-800/80 border-slate-700 backdrop-blur-sm mt-6">
+          <CardHeader className="border-b border-slate-700">
+            <CardTitle className="text-white">
+              {cottageTypes.find(c => c.value === selectedType)?.label} Cottage
+            </CardTitle>
+            <CardDescription className="text-slate-300">
+              {cottageTypes.find(c => c.value === selectedType)?.description}
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="pt-6">
+            {(() => {
+              const cottage = cottageTypes.find(c => c.value === selectedType);
+              const cottageImage = cottage ? placeholderImages.find(p => p.id === cottage.image) : null;
+              return cottageImage ? (
+                <div className="relative h-64 w-full rounded-lg overflow-hidden mb-4">
+                  <Image
+                    src={cottageImage.imageUrl}
+                    alt={cottage?.label || 'Cottage'}
+                    fill
+                    className="object-cover"
+                    data-ai-hint={cottageImage.imageHint}
+                  />
+                </div>
+              ) : null;
+            })()}
+            
+            <div className="space-y-3 text-sm">
+              <div className="flex justify-between items-center p-3 bg-slate-900/50 rounded-lg">
+                <span className="text-slate-300">Cottage Type:</span>
+                <span className="font-semibold text-white">
+                  {cottageTypes.find(c => c.value === selectedType)?.label}
+                </span>
+              </div>
+              <div className="flex justify-between items-center p-3 bg-slate-900/50 rounded-lg">
+                <span className="text-slate-300">Price:</span>
+                <span className="font-bold text-blue-400 text-lg">
+                  ₱{cottageTypes.find(c => c.value === selectedType)?.price.toLocaleString()}
+                </span>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      )}
       </div>
     </div>
   );
