@@ -35,6 +35,7 @@ export default function Header() {
       setUser(authUser);
       if (authUser) {
         const userProfile = await getUserProfile(authUser.uid);
+        console.log('User Profile Loaded:', userProfile); // Debug log
         setProfile(userProfile);
       } else {
         setProfile(null);
@@ -136,23 +137,39 @@ export default function Header() {
                 {user && (
                   <>
                     <div className="border-t my-3" />
-                    <div className="text-xs font-semibold text-muted-foreground px-3 mb-2">ACCOUNT</div>
-                    <Link 
-                      href="/dashboard" 
-                      className="text-base hover:text-primary hover:bg-accent transition-colors py-3 px-3 rounded-md flex items-center gap-2"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      <LayoutDashboard className="h-4 w-4" />
-                      Dashboard
-                    </Link>
-                    {profile?.role?.toLowerCase() === 'admin' && (
+                    <div className="text-xs font-semibold text-muted-foreground px-3 mb-2 flex items-center gap-2">
+                      ACCOUNT
+                      {profile?.role?.toLowerCase() === 'admin' && (
+                        <span className="text-[10px] bg-blue-600 text-white px-1.5 py-0.5 rounded font-semibold">ADMIN</span>
+                      )}
+                    </div>
+                    {profile?.role?.toLowerCase() === 'admin' ? (
+                      <>
+                        <Link 
+                          href="/admin/dashboard" 
+                          className="text-base hover:text-primary hover:bg-accent transition-colors py-3 px-3 rounded-md flex items-center gap-2"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          <Settings className="h-4 w-4" />
+                          Admin Dashboard
+                        </Link>
+                        <Link 
+                          href="/dashboard" 
+                          className="text-base hover:text-primary hover:bg-accent transition-colors py-3 px-3 rounded-md flex items-center gap-2"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          <LayoutDashboard className="h-4 w-4" />
+                          User Dashboard
+                        </Link>
+                      </>
+                    ) : (
                       <Link 
-                        href="/admin/dashboard" 
+                        href="/dashboard" 
                         className="text-base hover:text-primary hover:bg-accent transition-colors py-3 px-3 rounded-md flex items-center gap-2"
                         onClick={() => setMobileMenuOpen(false)}
                       >
-                        <Settings className="h-4 w-4" />
-                        Admin Panel
+                        <LayoutDashboard className="h-4 w-4" />
+                        Dashboard
                       </Link>
                     )}
                     <Link 
@@ -210,22 +227,36 @@ export default function Header() {
                 <DropdownMenuContent align="end" className="w-56">
                   <DropdownMenuLabel>
                     <div className="flex flex-col space-y-1">
-                      <p className="text-sm font-medium">{profile?.displayName}</p>
+                      <div className="flex items-center gap-2">
+                        <p className="text-sm font-medium">{profile?.displayName}</p>
+                        {profile?.role?.toLowerCase() === 'admin' && (
+                          <span className="text-[10px] bg-blue-600 text-white px-1.5 py-0.5 rounded font-semibold">ADMIN</span>
+                        )}
+                      </div>
                       <p className="text-xs text-muted-foreground">{user.email}</p>
                     </div>
                   </DropdownMenuLabel>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem asChild>
-                    <Link href="/dashboard" className="cursor-pointer">
-                      <LayoutDashboard className="mr-2 h-4 w-4" />
-                      Dashboard
-                    </Link>
-                  </DropdownMenuItem>
-                  {profile?.role?.toLowerCase() === 'admin' && (
+                  {profile?.role?.toLowerCase() === 'admin' ? (
+                    <>
+                      <DropdownMenuItem asChild>
+                        <Link href="/admin/dashboard" className="cursor-pointer">
+                          <Settings className="mr-2 h-4 w-4" />
+                          Admin Dashboard
+                        </Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem asChild>
+                        <Link href="/dashboard" className="cursor-pointer">
+                          <LayoutDashboard className="mr-2 h-4 w-4" />
+                          User Dashboard
+                        </Link>
+                      </DropdownMenuItem>
+                    </>
+                  ) : (
                     <DropdownMenuItem asChild>
-                      <Link href="/admin/dashboard" className="cursor-pointer">
-                        <Settings className="mr-2 h-4 w-4" />
-                        Admin Panel
+                      <Link href="/dashboard" className="cursor-pointer">
+                        <LayoutDashboard className="mr-2 h-4 w-4" />
+                        Dashboard
                       </Link>
                     </DropdownMenuItem>
                   )}
