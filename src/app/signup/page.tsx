@@ -11,11 +11,13 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { AlertCircle, CheckCircle, Waves, User, Mail, Phone, MapPin, Lock } from 'lucide-react';
+import { AlertCircle, CheckCircle, Waves, User, Mail, Phone, MapPin, Lock, Eye, EyeOff } from 'lucide-react';
 import { signUp } from '@/lib/auth';
 
 export default function SignupPage() {
   const router = useRouter();
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -210,16 +212,29 @@ export default function SignupPage() {
                     <Label htmlFor="password" className="text-gray-700 font-medium">
                       PASSWORD <span className="text-red-500">*</span>
                     </Label>
-                    <Input
-                      id="password"
-                      name="password"
-                      type="password"
-                      value={formData.password}
-                      onChange={handleChange}
-                      placeholder="Minimum 8 characters"
-                      className="h-12 border-2 border-gray-300 focus:border-blue-500"
-                      required
-                    />
+                    <div className="relative">
+                      <Input
+                        id="password"
+                        name="password"
+                        type={showPassword ? "text" : "password"}
+                        value={formData.password}
+                        onChange={handleChange}
+                        placeholder="Minimum 8 characters"
+                        className="h-12 border-2 border-gray-300 focus:border-blue-500 pr-12"
+                        required
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowPassword(!showPassword)}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                      >
+                        {showPassword ? (
+                          <EyeOff className="h-5 w-5" />
+                        ) : (
+                          <Eye className="h-5 w-5" />
+                        )}
+                      </button>
+                    </div>
                     <p className="text-xs text-gray-500">AT LEAST 8 CHARACTERS</p>
                   </div>
 
@@ -227,16 +242,29 @@ export default function SignupPage() {
                     <Label htmlFor="confirmPassword" className="text-gray-700 font-medium">
                       CONFIRM PASSWORD <span className="text-red-500">*</span>
                     </Label>
-                    <Input
-                      id="confirmPassword"
-                      name="confirmPassword"
-                      type="password"
-                      value={formData.confirmPassword}
-                      onChange={handleChange}
-                      placeholder="Re-enter password"
-                      className="h-12 border-2 border-gray-300 focus:border-blue-500"
-                      required
-                    />
+                    <div className="relative">
+                      <Input
+                        id="confirmPassword"
+                        name="confirmPassword"
+                        type={showConfirmPassword ? "text" : "password"}
+                        value={formData.confirmPassword}
+                        onChange={handleChange}
+                        placeholder="Re-enter password"
+                        className="h-12 border-2 border-gray-300 focus:border-blue-500 pr-12"
+                        required
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                      >
+                        {showConfirmPassword ? (
+                          <EyeOff className="h-5 w-5" />
+                        ) : (
+                          <Eye className="h-5 w-5" />
+                        )}
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
