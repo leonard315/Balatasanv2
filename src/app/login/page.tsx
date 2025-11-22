@@ -48,30 +48,32 @@ function LoginPageContent() {
 
     try {
       const user = await signIn(email, password);
-      console.log('User signed in:', user.uid);
+      console.log('✅ User signed in:', user.uid);
       
       // If there's a redirect URL, go there immediately
       if (redirectUrl) {
-        console.log('Redirecting to:', redirectUrl);
-        router.replace(redirectUrl);
+        console.log('🔄 Redirecting to:', redirectUrl);
+        window.location.href = redirectUrl;
         return;
       }
       
       // Check if user is admin
       const { getUserProfile } = await import('@/lib/auth');
       const profile = await getUserProfile(user.uid);
-      console.log('User profile loaded:', profile);
+      console.log('📋 User profile loaded:', profile);
+      console.log('🔍 Role check:', profile?.role, '===', 'admin', '?', profile?.role?.toLowerCase() === 'admin');
       
       // Check for both 'admin' and 'Admin' (case-insensitive)
       if (profile?.role?.toLowerCase() === 'admin') {
-        console.log('Admin detected, redirecting to admin dashboard');
-        router.replace('/admin/dashboard');
+        console.log('👑 Admin detected! Redirecting to admin dashboard...');
+        // Use window.location for a hard redirect to ensure it works
+        window.location.href = '/admin/dashboard';
       } else {
-        console.log('Regular user, redirecting to user dashboard');
-        router.replace('/dashboard');
+        console.log('👤 Regular user, redirecting to user dashboard...');
+        window.location.href = '/dashboard';
       }
     } catch (err: any) {
-      console.error('Login error:', err);
+      console.error('❌ Login error:', err);
       setError(err.message || 'Invalid credentials. Please try again.');
       setLoading(false);
     }
