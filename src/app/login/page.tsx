@@ -113,6 +113,8 @@ function LoginPageContent() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="h-10 sm:h-12 border-2 border-gray-300 focus:border-blue-500 text-sm sm:text-base"
+                  autoComplete="off"
+                  placeholder="Enter your email"
                   required
                 />
               </div>
@@ -128,6 +130,8 @@ function LoginPageContent() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     className="h-10 sm:h-12 border-2 border-gray-300 focus:border-blue-500 pr-10 sm:pr-12 text-sm sm:text-base"
+                    autoComplete="off"
+                    placeholder="Enter your password"
                     required
                   />
                   <button

@@ -143,6 +143,7 @@ export default function SignupPage() {
                     onChange={handleChange}
                     placeholder="Juan Dela Cruz"
                     className="h-12 border-2 border-gray-300 focus:border-blue-500"
+                    autoComplete="off"
                     required
                   />
                 </div>
@@ -161,6 +162,7 @@ export default function SignupPage() {
                       onChange={handleChange}
                       placeholder="your.email@example.com"
                       className="h-12 border-2 border-gray-300 focus:border-blue-500"
+                      autoComplete="off"
                       required
                     />
                   </div>
@@ -221,6 +223,7 @@ export default function SignupPage() {
                         onChange={handleChange}
                         placeholder="Minimum 8 characters"
                         className="h-12 border-2 border-gray-300 focus:border-blue-500 pr-12"
+                        autoComplete="new-password"
                         required
                       />
                       <button
@@ -251,6 +254,7 @@ export default function SignupPage() {
                         onChange={handleChange}
                         placeholder="Re-enter password"
                         className="h-12 border-2 border-gray-300 focus:border-blue-500 pr-12"
+                        autoComplete="new-password"
                         required
                       />
                       <button

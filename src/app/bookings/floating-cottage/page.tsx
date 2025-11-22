@@ -145,26 +145,26 @@ export default function FloatingCottageBookingPage() {
       />
       <div className="absolute inset-0 bg-gradient-to-br from-slate-900/95 via-blue-900/90 to-slate-900/95 -z-10" />
       
-      <div className="container mx-auto py-8 px-4 max-w-6xl relative">
+      <div className="container mx-auto py-4 sm:py-8 px-3 sm:px-4 max-w-6xl relative">
       <Link
         href="/accommodations/floating-cottage"
-        className="inline-flex items-center text-sm font-medium text-blue-400 hover:text-blue-300 mb-6"
+        className="inline-flex items-center text-xs sm:text-sm font-medium text-blue-400 hover:text-blue-300 mb-4 sm:mb-6"
       >
-        <ArrowLeft className="mr-2 h-4 w-4" />
+        <ArrowLeft className="mr-1.5 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4" />
         Back to Floating Cottage
       </Link>
 
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
         {/* Booking Form */}
         <Card className="bg-slate-800/80 border-slate-700 backdrop-blur-sm">
-          <CardHeader className="border-b border-slate-700">
-            <CardTitle className="text-2xl flex items-center gap-2 text-white">
-              <Home className="h-6 w-6 text-blue-400" />
+          <CardHeader className="border-b border-slate-700 p-4 sm:p-6">
+            <CardTitle className="text-lg sm:text-2xl flex items-center gap-2 text-white">
+              <Home className="h-5 w-5 sm:h-6 sm:w-6 text-blue-400" />
               Book Floating Cottage
             </CardTitle>
-            <CardDescription className="text-slate-300">Reserve your floating paradise experience</CardDescription>
+            <CardDescription className="text-slate-300 text-xs sm:text-sm">Reserve your floating paradise experience</CardDescription>
           </CardHeader>
-        <CardContent className="pt-6 space-y-4">
+        <CardContent className="pt-4 sm:pt-6 space-y-3 sm:space-y-4 p-4 sm:p-6">
           {success && (
             <Alert className="bg-green-900/50 border-green-700">
               <CheckCircle className="h-4 w-4 text-green-400" />
@@ -181,26 +181,26 @@ export default function FloatingCottageBookingPage() {
             </Alert>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="grid gap-2">
-              <Label htmlFor="fullName" className="text-slate-200">Full Name</Label>
+          <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
+            <div className="grid gap-1.5 sm:gap-2">
+              <Label htmlFor="fullName" className="text-slate-200 text-xs sm:text-sm">Full Name</Label>
               <Input 
                 id="fullName" 
                 name="fullName" 
-                className="bg-slate-900/50 border-slate-600 text-white placeholder:text-slate-400"
+                className="bg-slate-900/50 border-slate-600 text-white placeholder:text-slate-400 h-9 sm:h-10 text-sm"
                 required 
               />
             </div>
 
-            <div className="grid gap-2">
-              <Label htmlFor="cottageType" className="text-slate-200">Cottage Type</Label>
+            <div className="grid gap-1.5 sm:gap-2">
+              <Label htmlFor="cottageType" className="text-slate-200 text-xs sm:text-sm">Cottage Type</Label>
               <Select name="cottageType" required onValueChange={handleCottageTypeChange}>
-                <SelectTrigger className="bg-slate-900/50 border-slate-600 text-white">
+                <SelectTrigger className="bg-slate-900/50 border-slate-600 text-white h-9 sm:h-10 text-sm">
                   <SelectValue placeholder="Select cottage type" />
                 </SelectTrigger>
                 <SelectContent className="bg-slate-800 border-slate-700">
                   {cottageTypes.map((type) => (
-                    <SelectItem key={type.value} value={type.value} className="text-white hover:bg-slate-700">
+                    <SelectItem key={type.value} value={type.value} className="text-white hover:bg-slate-700 text-sm">
                       {type.label} - ₱{type.price.toLocaleString()}
                     </SelectItem>
                   ))}
@@ -208,19 +208,19 @@ export default function FloatingCottageBookingPage() {
               </Select>
             </div>
 
-            <div className="grid gap-2">
-              <Label htmlFor="bookingDate" className="text-slate-200">Booking Date</Label>
+            <div className="grid gap-1.5 sm:gap-2">
+              <Label htmlFor="bookingDate" className="text-slate-200 text-xs sm:text-sm">Booking Date</Label>
               <Input 
                 id="bookingDate" 
                 name="bookingDate" 
                 type="date" 
-                className="bg-slate-900/50 border-slate-600 text-white"
+                className="bg-slate-900/50 border-slate-600 text-white h-9 sm:h-10 text-sm"
                 required 
               />
             </div>
 
-            <div className="grid gap-2">
-              <Label htmlFor="participants" className="text-slate-200">Number of Participants (Max 8)</Label>
+            <div className="grid gap-1.5 sm:gap-2">
+              <Label htmlFor="participants" className="text-slate-200 text-xs sm:text-sm">Number of Participants (Max 8)</Label>
               <Input 
                 id="participants" 
                 name="participants" 
@@ -228,44 +228,44 @@ export default function FloatingCottageBookingPage() {
                 min="1" 
                 max="8" 
                 defaultValue="1" 
-                className="bg-slate-900/50 border-slate-600 text-white"
+                className="bg-slate-900/50 border-slate-600 text-white h-9 sm:h-10 text-sm"
                 required 
               />
             </div>
 
-            <div className="grid gap-2">
-              <Label htmlFor="specialRequests" className="text-slate-200">Special Requests (Optional)</Label>
+            <div className="grid gap-1.5 sm:gap-2">
+              <Label htmlFor="specialRequests" className="text-slate-200 text-xs sm:text-sm">Special Requests (Optional)</Label>
               <Textarea 
                 id="specialRequests" 
                 name="specialRequests" 
                 rows={3} 
                 placeholder="Any special requests or requirements?" 
-                className="bg-slate-900/50 border-slate-600 text-white placeholder:text-slate-400"
+                className="bg-slate-900/50 border-slate-600 text-white placeholder:text-slate-400 text-sm"
               />
             </div>
 
             {totalAmount > 0 && (
-              <div className="p-5 bg-blue-900/30 border border-blue-700 rounded-lg space-y-3">
+              <div className="p-3 sm:p-5 bg-blue-900/30 border border-blue-700 rounded-lg space-y-2 sm:space-y-3">
                 <div className="pt-2 border-t border-blue-700/50">
                   <div className="flex justify-between items-center">
-                    <span className="text-slate-200 font-semibold text-lg">Total Amount:</span>
-                    <span className="text-3xl font-bold text-blue-400">₱{totalAmount.toLocaleString()}</span>
+                    <span className="text-slate-200 font-semibold text-sm sm:text-lg">Total Amount:</span>
+                    <span className="text-xl sm:text-3xl font-bold text-blue-400">₱{totalAmount.toLocaleString()}</span>
                   </div>
                 </div>
               </div>
             )}
 
-            <div className="grid gap-2">
-              <Label htmlFor="paymentMethod" className="text-slate-200 text-base font-semibold">Payment Method</Label>
+            <div className="grid gap-1.5 sm:gap-2">
+              <Label htmlFor="paymentMethod" className="text-slate-200 text-xs sm:text-base font-semibold">Payment Method</Label>
               <Select name="paymentMethod" required onValueChange={(value) => setSelectedPaymentMethod(value)}>
-                <SelectTrigger className="bg-slate-900/70 border-slate-600 text-white h-12 hover:bg-slate-900 transition-colors">
+                <SelectTrigger className="bg-slate-900/70 border-slate-600 text-white h-9 sm:h-12 hover:bg-slate-900 transition-colors text-sm">
                   <SelectValue placeholder="Select payment method" />
                 </SelectTrigger>
                 <SelectContent className="bg-slate-800 border-slate-700">
-                  <SelectItem value="GCash" className="text-white hover:bg-slate-700 cursor-pointer">GCash</SelectItem>
-                  <SelectItem value="PayMaya" className="text-white hover:bg-slate-700 cursor-pointer">PayMaya</SelectItem>
-                  <SelectItem value="Bank Transfer" className="text-white hover:bg-slate-700 cursor-pointer">Bank Transfer</SelectItem>
-                  <SelectItem value="Cash" className="text-white hover:bg-slate-700 cursor-pointer">Cash on Arrival</SelectItem>
+                  <SelectItem value="GCash" className="text-white hover:bg-slate-700 cursor-pointer text-sm">GCash</SelectItem>
+                  <SelectItem value="PayMaya" className="text-white hover:bg-slate-700 cursor-pointer text-sm">PayMaya</SelectItem>
+                  <SelectItem value="Bank Transfer" className="text-white hover:bg-slate-700 cursor-pointer text-sm">Bank Transfer</SelectItem>
+                  <SelectItem value="Cash" className="text-white hover:bg-slate-700 cursor-pointer text-sm">Cash on Arrival</SelectItem>
                 </SelectContent>
               </Select>
             </div>
