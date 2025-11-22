@@ -55,7 +55,7 @@ export default function FloatingCottagePage() {
             {heroImage && (
               <Image
                 src={heroImage.imageUrl}
-                alt="Tours"
+                alt="Balatasan Floating Cottage"
                 fill
                 className="object-cover"
                 data-ai-hint={heroImage.imageHint}
@@ -64,7 +64,7 @@ export default function FloatingCottagePage() {
             )}
             <div className="absolute inset-0 bg-black/50 flex flex-col justify-end p-8">
               <h1 className="text-4xl md:text-5xl font-headline font-bold text-white">
-                Tours
+                Balatasan Floating Cottage
               </h1>
               <p className="mt-2 text-lg text-white/90">
                 Experience paradise on water
@@ -76,10 +76,10 @@ export default function FloatingCottagePage() {
         <div className="max-w-4xl mx-auto">
           <div className="mb-12 text-center">
             <h2 className="text-3xl font-bold font-headline mb-4">
-              Tours
+              Balatasan Floating Cottage
             </h2>
             <p className="text-muted-foreground text-lg">
-              Experience the ultimate relaxation with our island tours - explore traditional bamboo and nipa huts built over
+              Experience the ultimate relaxation in our authentic floating cottages - traditional bamboo and nipa huts built over
               the crystal clear waters of Verde Island Passage. Perfect for
               families, groups, and special occasions.
             </p>
@@ -113,7 +113,7 @@ export default function FloatingCottagePage() {
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             <Card className="bg-card">
               <CardHeader>
-                <CardTitle>Tour Features</CardTitle>
+                <CardTitle>Cottage Features</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-start gap-3">
@@ -261,7 +261,7 @@ export default function FloatingCottagePage() {
 
           <Card className="mb-12">
             <CardHeader>
-              <CardTitle>What Makes Our Tours Special</CardTitle>
+              <CardTitle>What Makes Balatasan Floating Cottage Special</CardTitle>
             </CardHeader>
             <CardContent className="grid md:grid-cols-2 gap-x-8 gap-y-6">
               <div className="flex gap-4">
@@ -416,10 +416,10 @@ export default function FloatingCottagePage() {
 
           <div className="bg-primary text-primary-foreground rounded-xl p-8 text-center shadow-lg">
             <h2 className="text-3xl font-bold mb-2">
-              Experience Island Paradise
+              Experience Floating Paradise
             </h2>
             <p className="text-primary-foreground/90 mb-6 max-w-lg mx-auto">
-              Book your island tour today and create unforgettable
+              Reserve your floating cottage today and create unforgettable
               memories!
             </p>
             <Button
@@ -428,9 +428,9 @@ export default function FloatingCottagePage() {
               className="bg-white/90 text-primary hover:bg-white"
               asChild
             >
-              <Link href="/bookings/new">
+              <Link href="/bookings/floating-cottage">
                 <Ticket className="mr-2 h-5 w-5" />
-                Book Now
+                Reserve Floating Cottage
               </Link>
             </Button>
           </div>
