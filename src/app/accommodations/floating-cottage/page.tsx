@@ -1,7 +1,11 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { auth } from '@/lib/firebase';
+import { onAuthStateChanged } from 'firebase/auth';
 import {
   ArrowLeft,
   Calendar,
@@ -37,7 +41,24 @@ const galleryImages = [
 ];
 
 export default function FloatingCottagePage() {
+  const router = useRouter();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const heroImage = placeholderImages.find((p) => p.id === 'cottage-1');
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setIsLoggedIn(!!user);
+    });
+    return () => unsubscribe();
+  }, []);
+
+  const handleReserveClick = () => {
+    if (!isLoggedIn) {
+      router.push('/login?redirect=/bookings/floating-cottage');
+    } else {
+      router.push('/bookings/floating-cottage');
+    }
+  };
 
   return (
     <div className="bg-background text-foreground">
@@ -426,12 +447,10 @@ export default function FloatingCottagePage() {
               size="lg"
               variant="secondary"
               className="bg-white/90 text-primary hover:bg-white"
-              asChild
+              onClick={handleReserveClick}
             >
-              <Link href="/bookings/floating-cottage">
-                <Ticket className="mr-2 h-5 w-5" />
-                Reserve Floating Cottage
-              </Link>
+              <Ticket className="mr-2 h-5 w-5" />
+              Reserve Floating Cottage
             </Button>
           </div>
         </div>
