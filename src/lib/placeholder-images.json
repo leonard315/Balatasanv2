@@ -1,0 +1,160 @@
+{
+  "placeholderImages": [
+    {
+      "id": "hero-1",
+      "description": "A beautiful panoramic view of Balatasan beach at sunset.",
+      "imageUrl": "https://images.unsplash.com/photo-1713293712514-d814f5c150a0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHx0cm9waWNhbCUyMGJlYWNoJTIwc3Vuc2V0fGVufDB8fHx8MTc2MzcwNzk0NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "tropical beach sunset"
+    },
+    {
+      "id": "cottage-1",
+      "description": "A cozy beachfront cottage with a porch.",
+      "imageUrl": "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxiZWFjaCUyMGNvdHRhZ2V8ZW58MHx8fHwxNzYzNzA3OTQ1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "beach cottage"
+    },
+    {
+      "id": "cottage-std-img",
+      "description": "A standard floating cottage on the water.",
+      "imageUrl": "https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/473679239_1146789043701034_2717171847084546255_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeFJKqzQqxzoPklinJugetkp1-7AcDE5DKLX7sBwMTkMopjJ-byXFspr1CQrvUwZyeyF0mLm2HFea-AcLN54Ki-E&_nc_ohc=cbsby6n3xYsQ7kNvwHBv_at&_nc_oc=AdmXt9Llb2FpI7i67KhPmxnQqGA2FhRC8Pa8HjOvN03QVZK7rk8hZvdFN98einvCo0o&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=ZeApD7GeL4Q-tOR_zzRuJQ&oh=00_AfgPXeTZVFwaCD46qLaqMUoHsNZNe4RAuRD5fkDB837CFw&oe=6925E61E",
+      "imageHint": "floating cottage"
+    },
+    {
+      "id": "cottage-teen-img",
+      "description": "A floating cottage for teenagers/children on the water.",
+      "imageUrl": "https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/484065801_9936324856398252_9183074651347393058_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeFl_NUy6hJgPIL-JsmjQRj-KjJ6fMwBBJMqMnp8zAEEk-lTPszHjuXmIyaeAaG1A1pGshnjo7PP9PF0iW8bQ8Up&_nc_ohc=BUQhMy8LYP8Q7kNvwEOBf3y&_nc_oc=AdnuovIK_8tW9wO2gT5qF71fQeJ_Pa2nPvypHLWX7l5A56IcwfiF0kHku2S5_Epo7ig&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=-AbC-Otplht4lqAviHHDcQ&oh=00_Afh4r_ab4GqfSDKeWKUAFChZ8bk45Kw518llGb1yRxWIqQ&oe=6925F6D3",
+      "imageHint": "floating cottage water"
+    },
+    {
+      "id": "cottage-fam-img",
+      "description": "A family floating cottage on the water.",
+      "imageUrl": "https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/495466346_23963808773211918_4410334545999554269_n.jpg?stp=dst-jpg_s590x590_tt6&_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeE3XrsHDmbNiHSeaCy4iTa9ayw0q9c4TutrLDSr1zhO6-SGBdSz1kGFE3PmB3iZyV9NoFPdFKJLDM2tSdY5TQsC&_nc_ohc=qa___1rwUMUQ7kNvwFi1HBJ&_nc_oc=Adn0-XorXdXNFSIxPSUQKew7dDnEnjwU3nyXYdW-K9jrbGN38mmn9Qpnls6mVQisvj4&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=LR0WrI-3b4BWjwt2k0u71A&oh=00_AfiInwcEKXb7PNhszgS_Ixkrl60Pw60kDXNDMotmpCsH-g&oe=69261525",
+      "imageHint": "family cottage"
+    },
+    {
+      "id": "cottage-2",
+      "description": "A modern beachfront cottage surrounded by palm trees.",
+      "imageUrl": "https://images.unsplash.com/photo-1721369483526-62f48a00b949?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxiZWFjaCUyMGhvdXNlfGVufDB8fHx8MTc2MzYzMTU2NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "beach house"
+    },
+    {
+      "id": "glamping-1",
+      "description": "A luxurious glamping tent at night with lights.",
+      "imageUrl": "https://images.unsplash.com/photo-1676776293236-f37e51cf1c3c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Z2xhbXBpbmclMjB0ZW50fGVufDB8fHx8MTc2MzY4MTkwNHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "glamping tent"
+    },
+    {
+      "id": "glamping-2",
+      "description": "A spacious glamping tent with a view of the mountains.",
+      "imageUrl": "https://images.unsplash.com/photo-1599484793836-932d03a11c1e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxnbGFtcGluZyUyMHRlbnR8ZW58MHx8fHwxNzYzNjgxOTA0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "glamping tent"
+    },
+    {
+      "id": "villa-1",
+      "description": "A modern villa with a swimming pool.",
+      "imageUrl": "https://images.unsplash.com/photo-1598228723793-52759bba239c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxiZWFjaCUyMHZpbGxhfGVufDB8fHx8MTc2MzY4MTkxMHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "beach villa"
+    },
+    {
+      "id": "villa-2",
+      "description": "A luxurious villa with a private pool and ocean view.",
+      "imageUrl": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxiZWFjaCUyMHZpbGxhfGVufDB8fHx8MTc2MzY4MTkxMHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "beach villa"
+    },
+    {
+      "id": "aslom-sibalat-1",
+      "description": "Aslom & Sibalat Island with beautiful sandbar.",
+      "imageUrl": "https://travelorientalmindoro.ph/Content/img/uploads/83c5a007-b150-430f-b9c4-c5a7549a7f13_thumb.jpg",
+      "imageHint": "island hopping"
+    },
+    {
+      "id": "target-island-1",
+      "description": "A beautiful view of Target Island with clear blue water.",
+      "imageUrl": "https://travelorientalmindoro.ph/Content/img/uploads/33b63d38-739b-4b7f-b8c4-ca744970c5cf.jpg",
+      "imageHint": "island beach"
+    },
+    {
+      "id": "buyayao-1",
+      "description": "Buyayao Island Marine Sanctuary with coral reefs.",
+      "imageUrl": "https://travelorientalmindoro.ph/Content/img/uploads/aaeb2388-f485-4799-8db1-c31162b102a8_thumb.jpg",
+      "imageHint": "snorkeling coral"
+    },
+    {
+      "id": "suguicay-1",
+      "description": "Relax on the white sand beaches of Suguicay Island and enjoy the tranquil atmosphere.",
+      "imageUrl": "https://travelorientalmindoro.ph/Content/img/uploads/0ccf5666-41a4-4efc-b51c-abcb142057e7.jpg",
+      "imageHint": "sandy beach"
+    },
+    {
+      "id": "silad-1",
+      "description": "Discover the unique rock formations and hidden coves of Silad Island.",
+      "imageUrl": "https://travelorientalmindoro.ph/Content/img/uploads/04468cee-9e1b-469f-a21c-90fef8360379.jpg",
+      "imageHint": "island cove"
+    },
+    {
+      "id": "cottage-view",
+      "description": "Cottage View",
+      "imageUrl": "https://images.unsplash.com/photo-1663198265890-8499f5324478?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjb3R0YWdlJTIwdmlld3xlbnwwfHx8fDE3NjM3MTM3NTh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "cottage view"
+    },
+    {
+      "id": "crystal-waters",
+      "description": "Crystal Waters",
+      "imageUrl": "https://images.unsplash.com/photo-1668784319323-2bcd796b3a35?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjcnlzdGFsJTIwd2F0ZXJ8ZW58MHx8fHwxNzYzNzEzNzU4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "crystal water"
+    },
+    {
+      "id": "island-paradise",
+      "description": "Island Paradise",
+      "imageUrl": "https://images.unsplash.com/photo-1717557786105-8a7e15bf5f14?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxpc2xhbmQlMjBwYXJhZGlzZXxlbnwwfHx8fDE3NjM3MTM3NTh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "island paradise"
+    },
+    {
+      "id": "flying-fish-1",
+      "description": "People riding a flying fish inflatable boat.",
+      "imageUrl": "https://www.zrinflatable.com/wp-content/uploads/Flying-Fish-3.webp",
+      "imageHint": "flying fish inflatable"
+    },
+    {
+      "id": "banana-boat-1",
+      "description": "A group of people enjoying a banana boat ride.",
+      "imageUrl": "https://www.coltonyacht.com/storage/uploads/images/202208/24/1661332407_TIJhSSLagQ.jpg",
+      "imageHint": "banana boat"
+    },
+    {
+      "id": "hurricane-1",
+      "description": "An inflatable hurricane ride on the water.",
+      "imageUrl": "https://www.oklilytoys.com/data/watermark/20211026/617819196291a.jpg",
+      "imageHint": "water sport"
+    },
+    {
+      "id": "crazy-ufo-1",
+      "description": "A crazy UFO inflatable ride spinning on the water.",
+      "imageUrl": "https://www.vivovenetia.it/wp-content/uploads/2018/11/sport-in-spiaggia-jesolo.jpeg",
+      "imageHint": "crazy ufo inflatable"
+    },
+    {
+      "id": "pedal-boat-1",
+      "description": "A pedal boat on a calm lake.",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0811/6449/products/CommanderPedal1_large.jpg?v=1614821668",
+      "imageHint": "pedal boat"
+    },
+    {
+      "id": "hand-paddle-boat-1",
+      "description": "A colorful hand paddle boat for kids.",
+      "imageUrl": "https://5.imimg.com/data5/RE/EE/GJ/SELLER-8192417/kids-paddle-boat-1000x1000.png",
+      "imageHint": "kids paddle boat"
+    },
+    {
+      "id": "jet-ski-1",
+      "description": "A person riding a jet ski on the ocean.",
+      "imageUrl": "https://watercraftzone.com.au/wp-content/uploads/2024/08/2025-Yamaha-GP-SVHO-studio-2048x1151.jpg",
+      "imageHint": "jet ski"
+    },
+    {
+      "id": "auth-background",
+      "description": "A beautiful tropical beach with white sand and palm trees.",
+      "imageUrl": "https://i.ytimg.com/vi/GNAkv2CTl_8/maxresdefault.jpg",
+      "imageHint": "tropical beach"
+    }
+  ]
+}
