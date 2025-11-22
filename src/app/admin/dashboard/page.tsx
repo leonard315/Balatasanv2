@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Activity, DollarSign, Users, Calendar, TrendingUp, Star, ArrowRight } from 'lucide-react';
@@ -10,15 +11,44 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { db } from '@/lib/firebase';
+import { db, auth } from '@/lib/firebase';
 import { collection, onSnapshot, query, orderBy, limit } from 'firebase/firestore';
+import { onAuthStateChanged } from 'firebase/auth';
+import { getUserProfile } from '@/lib/auth';
 import { format } from 'date-fns';
 
 export default function AdminDashboard() {
+  const router = useRouter();
   const [stats, setStats] = useState<any>({ totalBookings: 0, totalRevenue: 0, pendingCount: 0, approvedCount: 0 });
   const [recentBookings, setRecentBookings] = useState<any[]>([]);
   const [feedbackStats, setFeedbackStats] = useState<any>({ totalFeedback: 0, averageRating: '0.0' });
   const [loading, setLoading] = useState(true);
+  const [checkingAuth, setCheckingAuth] = useState(true);
+
+  // Check if user is admin
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (!user) {
+        console.log('No user, redirecting to login');
+        router.replace('/login?redirect=/admin/dashboard');
+        return;
+      }
+
+      const profile = await getUserProfile(user.uid);
+      console.log('Admin dashboard - User profile:', profile);
+      
+      if (profile?.role?.toLowerCase() !== 'admin') {
+        console.log('Not admin, redirecting to user dashboard');
+        router.replace('/dashboard');
+        return;
+      }
+
+      console.log('Admin verified, showing dashboard');
+      setCheckingAuth(false);
+    });
+
+    return () => unsubscribe();
+  }, [router]);
 
   useEffect(() => {
     // Real-time listener for bookings
@@ -80,6 +110,16 @@ export default function AdminDashboard() {
       unsubscribeFeedback();
     };
   }, []);
+
+  if (checkingAuth) {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-slate-900">
+        <div className="text-center">
+          <p className="text-white text-lg">Verifying admin access...</p>
+        </div>
+      </div>
+    );
+  }
 
   if (loading) {
     return (

@@ -37,9 +37,11 @@ function LoginPageContent() {
 
     try {
       const user = await signIn(email, password);
+      console.log('User signed in:', user.uid);
       
       // If there's a redirect URL, go there immediately
       if (redirectUrl) {
+        console.log('Redirecting to:', redirectUrl);
         router.replace(redirectUrl);
         return;
       }
@@ -47,14 +49,18 @@ function LoginPageContent() {
       // Check if user is admin
       const { getUserProfile } = await import('@/lib/auth');
       const profile = await getUserProfile(user.uid);
+      console.log('User profile loaded:', profile);
       
       // Check for both 'admin' and 'Admin' (case-insensitive)
       if (profile?.role?.toLowerCase() === 'admin') {
+        console.log('Admin detected, redirecting to admin dashboard');
         router.replace('/admin/dashboard');
       } else {
+        console.log('Regular user, redirecting to user dashboard');
         router.replace('/dashboard');
       }
     } catch (err: any) {
+      console.error('Login error:', err);
       setError(err.message || 'Invalid credentials. Please try again.');
       setLoading(false);
     }
