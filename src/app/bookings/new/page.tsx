@@ -71,9 +71,9 @@ function BookingPageContent() {
   const calculateTotal = () => {
     if (!selectedData) return 0;
     if (bookingType === 'cottage') {
-      return selectedData.price;
+      return (selectedData as any).price;
     } else if (bookingType === 'tour') {
-      return selectedData.price * participants;
+      return (selectedData as any).price * participants;
     } else {
       const ws = selectedData as any;
       return ws.basePrice + (Math.max(0, participants - ws.capacity) * ws.excessCharge);
@@ -305,7 +305,7 @@ function BookingPageContent() {
                         {bookingType === 'cottage' ? 'Cottage type:' : bookingType === 'tour' ? 'Price per person:' : 'Base price:'}
                       </span>
                       <span className="text-slate-200 font-medium">
-                        ₱{selectedData.price?.toLocaleString() || (selectedData as any).basePrice?.toLocaleString()}
+                        ₱{(selectedData as any).price?.toLocaleString() || (selectedData as any).basePrice?.toLocaleString()}
                       </span>
                     </div>
                     <div className="flex justify-between items-center text-sm">
@@ -465,7 +465,7 @@ function BookingPageContent() {
                         {bookingType === 'cottage' ? 'Price:' : bookingType === 'tour' ? 'Price per person:' : 'Base price:'}
                       </span>
                       <span className="font-bold text-blue-400 text-lg">
-                        ₱{selectedData.price?.toLocaleString() || (selectedData as any).basePrice?.toLocaleString()}
+                        ₱{(selectedData as any).price?.toLocaleString() || (selectedData as any).basePrice?.toLocaleString()}
                       </span>
                     </div>
                     {participants > 1 && bookingType !== 'cottage' && (
