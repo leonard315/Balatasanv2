@@ -62,14 +62,14 @@ export default function AdminDashboard() {
       const allBookings = snapshot.docs.map(doc => ({
         id: doc.id,
         ...doc.data()
-      }));
+      })) as any[];
       
       setRecentBookings(allBookings.slice(0, 5));
       
       // Calculate stats in real-time
-      const totalRevenue = allBookings.reduce((sum, b) => sum + (b.totalAmount || 0), 0);
-      const pendingCount = allBookings.filter(b => b.status === 'pending').length;
-      const approvedCount = allBookings.filter(b => b.status === 'approved' || b.status === 'confirmed').length;
+      const totalRevenue = allBookings.reduce((sum: number, b: any) => sum + (b.totalAmount || 0), 0);
+      const pendingCount = allBookings.filter((b: any) => b.status === 'pending').length;
+      const approvedCount = allBookings.filter((b: any) => b.status === 'approved' || b.status === 'confirmed').length;
       
       setStats({
         totalBookings: allBookings.length,
