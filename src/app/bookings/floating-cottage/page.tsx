@@ -117,7 +117,7 @@ export default function FloatingCottageBookingPage() {
       />
       <div className="absolute inset-0 bg-gradient-to-br from-slate-900/95 via-blue-900/90 to-slate-900/95 -z-10" />
       
-      <div className="container mx-auto py-8 px-4 max-w-2xl relative">
+      <div className="container mx-auto py-8 px-4 max-w-6xl relative">
       <Link
         href="/accommodations/floating-cottage"
         className="inline-flex items-center text-sm font-medium text-blue-400 hover:text-blue-300 mb-6"
@@ -126,11 +126,16 @@ export default function FloatingCottageBookingPage() {
         Back to Floating Cottage
       </Link>
 
-      <Card className="bg-slate-800/80 border-slate-700 backdrop-blur-sm">
-        <CardHeader className="border-b border-slate-700">
-          <CardTitle className="text-2xl text-white">Book Floating Cottage</CardTitle>
-          <CardDescription className="text-slate-300">Reserve your floating paradise experience</CardDescription>
-        </CardHeader>
+      <div className="grid md:grid-cols-2 gap-6">
+        {/* Booking Form */}
+        <Card className="bg-slate-800/80 border-slate-700 backdrop-blur-sm">
+          <CardHeader className="border-b border-slate-700">
+            <CardTitle className="text-2xl flex items-center gap-2 text-white">
+              <Home className="h-6 w-6 text-blue-400" />
+              Book Floating Cottage
+            </CardTitle>
+            <CardDescription className="text-slate-300">Reserve your floating paradise experience</CardDescription>
+          </CardHeader>
         <CardContent className="pt-6 space-y-4">
           {success && (
             <Alert className="bg-green-900/50 border-green-700">
@@ -318,34 +323,51 @@ export default function FloatingCottageBookingPage() {
         </CardContent>
       </Card>
 
-      {/* Cottage Preview */}
-      {selectedType && (() => {
-        const cottage = cottageTypes.find(c => c.value === selectedType);
-        const cottageImage = cottage ? placeholderImages.find(p => p.id === cottage.image) : null;
-        return cottageImage ? (
-          <Card className="bg-slate-800/80 border-slate-700 backdrop-blur-sm mt-6">
-            <CardHeader className="border-b border-slate-700">
-              <CardTitle className="text-white">
-                {cottage.label} Cottage
-              </CardTitle>
-              <CardDescription className="text-slate-300">
-                {cottage.description}
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="pt-6">
-              <div className="relative h-64 w-full rounded-lg overflow-hidden">
-                <Image
-                  src={cottageImage.imageUrl}
-                  alt={cottage.label}
-                  fill
-                  className="object-cover"
-                  data-ai-hint={cottageImage.imageHint}
-                />
-              </div>
+      {/* Preview Panel */}
+      <div className="space-y-4">
+        {selectedType ? (() => {
+          const cottage = cottageTypes.find(c => c.value === selectedType);
+          const cottageImage = cottage ? placeholderImages.find(p => p.id === cottage.image) : null;
+          return (
+            <Card className="bg-slate-800/80 border-slate-700 backdrop-blur-sm">
+              <CardHeader className="border-b border-slate-700">
+                <CardTitle className="text-white">{cottage?.label}</CardTitle>
+                <CardDescription className="text-slate-300">{cottage?.description}</CardDescription>
+              </CardHeader>
+              <CardContent className="pt-6">
+                {cottageImage && (
+                  <div className="relative h-64 w-full rounded-lg overflow-hidden mb-4">
+                    <Image
+                      src={cottageImage.imageUrl}
+                      alt={cottage?.label || 'Cottage'}
+                      fill
+                      className="object-cover"
+                      data-ai-hint={cottageImage.imageHint}
+                    />
+                  </div>
+                )}
+                
+                <div className="space-y-3 text-sm">
+                  <div className="flex justify-between items-center p-3 bg-slate-900/50 rounded-lg">
+                    <span className="text-slate-300">Price:</span>
+                    <span className="font-bold text-blue-400 text-lg">
+                      ₱{cottage?.price.toLocaleString()}
+                    </span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          );
+        })() : (
+          <Card className="bg-slate-800/80 border-slate-700 backdrop-blur-sm">
+            <CardContent className="pt-20 pb-20 text-center">
+              <Home className="h-16 w-16 mx-auto mb-4 text-slate-600" />
+              <p className="text-slate-400">Select a cottage type to see details and preview</p>
             </CardContent>
           </Card>
-        ) : null;
-      })()}
+        )}
+      </div>
+      </div>
       </div>
     </div>
   );
