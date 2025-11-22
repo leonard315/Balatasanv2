@@ -35,7 +35,12 @@ export default function Header() {
       setUser(authUser);
       if (authUser) {
         const userProfile = await getUserProfile(authUser.uid);
-        console.log('User Profile Loaded:', userProfile); // Debug log
+        console.log('=== Header: User Profile Loaded ===');
+        console.log('Profile:', userProfile);
+        console.log('Role:', userProfile?.role);
+        console.log('Role type:', typeof userProfile?.role);
+        console.log('Is admin?:', userProfile?.role?.toLowerCase() === 'admin');
+        console.log('===================================');
         setProfile(userProfile);
       } else {
         setProfile(null);

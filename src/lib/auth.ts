@@ -65,6 +65,12 @@ export async function getUserProfile(uid: string): Promise<UserProfile | null> {
 
   if (docSnap.exists()) {
     const data = docSnap.data();
+    console.log('=== getUserProfile: Raw Firestore Data ===');
+    console.log('UID:', uid);
+    console.log('Raw data:', data);
+    console.log('Role from data:', data.role);
+    console.log('=========================================');
+    
     return {
       uid: data.uid,
       email: data.email,
